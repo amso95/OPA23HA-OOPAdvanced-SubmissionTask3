@@ -2,8 +2,6 @@ package org.example.objects;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import org.example.FactoryMethod.IRecipe;
-import org.example.objects.Recipe;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -59,7 +57,9 @@ public class MessageSender {
             System.out.println("Nothing to connect to, everything crashed.");
             System.out.println(e.getMessage());
         }
-        return null;
+        // If database GET-request fails, return a new empty ArrayList instead of null
+        // so the program do not crash.
+        return new ArrayList<>();
     }
 
     public void postRecipe(Recipe recipe){
@@ -87,7 +87,7 @@ public class MessageSender {
                 while ((responseLine = br.readLine()) != null) {
                     response.append(responseLine.trim());
                 }
-                System.out.println(response.toString());
+                //System.out.println(response.toString());
             }
             connection.connect(); //This will make the connection
 
@@ -134,7 +134,7 @@ public class MessageSender {
                 while ((responseLine = br.readLine()) != null) {
                     response.append(responseLine.trim());
                 }
-                System.out.println(response.toString());
+                //System.out.println(response.toString());
             }
             connection.connect(); //This will make the connection
 
@@ -173,7 +173,7 @@ public class MessageSender {
                 while ((responseLine = br.readLine()) != null) {
                     response.append(responseLine.trim());
                 }
-                System.out.println(response.toString());
+                //System.out.println(response.toString());
             }
             connection.connect(); //This will make the connection
 
@@ -231,7 +231,7 @@ public class MessageSender {
                 while ((responseLine = br.readLine()) != null) {
                     response.append(responseLine.trim());
                 }
-                System.out.println(response.toString());
+                //System.out.println(response.toString());
             }
             connection.connect(); //This will make the connection
 
@@ -278,7 +278,7 @@ public class MessageSender {
                 while ((responseLine = br.readLine()) != null) {
                     response.append(responseLine.trim());
                 }
-                System.out.println(response.toString());
+                //System.out.println(response.toString());
             }
             connection.connect(); //This will make the connection
 
@@ -318,7 +318,7 @@ public class MessageSender {
                 while ((responseLine = br.readLine()) != null) {
                     response.append(responseLine.trim());
                 }
-                System.out.println(response.toString());
+                //System.out.println(response.toString());
             }
             connection.connect(); //This will make the connection
 

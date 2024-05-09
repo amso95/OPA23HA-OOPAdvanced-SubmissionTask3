@@ -1,4 +1,4 @@
-package org.example.FactoryMethod;
+package org.example.FactoryPattern;
 
 import org.example.objects.*;
 import org.example.builders.RecipeBuilder;
@@ -25,19 +25,11 @@ public class CookingRecipe implements IRecipe{
         /* Add recipe with a recipe builder. */
         cookingRecipe = recipeBuilder.setId(id).setName(recipeName).setIngredients(ingredients).setInstructions(instructions).setCreator(recipeCreator).setBakingOrCooking(bakingOrCooking).build();
         cookingRecipes.add(cookingRecipe);
+        // Add recipe to database.
         MessageSender messageSender = new MessageSender();
         messageSender.postRecipe(cookingRecipe);
+        // Inform user.
         System.out.println("Cooking recipe '" + recipeName + "' is added.");
-    }
-
-    @Override
-    public void printRecipe() {
-        cookingRecipe.printRecipe();
-    }
-
-    @Override
-    public void printRecipeWithId() {
-        cookingRecipe.printRecipeWithId();
     }
 
     @Override

@@ -1,7 +1,5 @@
-package org.example.FactoryMethod;
+package org.example.FactoryPattern;
 
-import org.example.objects.Ingredient;
-import org.example.objects.Instruction;
 import org.example.objects.Recipe;
 
 import java.util.ArrayList;

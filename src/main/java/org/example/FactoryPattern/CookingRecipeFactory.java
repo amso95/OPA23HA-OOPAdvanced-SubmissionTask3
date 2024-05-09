@@ -1,4 +1,4 @@
-package org.example.FactoryMethod;
+package org.example.FactoryPattern;
 
 import org.example.objects.Recipe;
 import org.example.objects.RecipeMenu;

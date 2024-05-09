@@ -1,4 +1,4 @@
-package org.example.FactoryMethod;
+package org.example.FactoryPattern;
 
 import org.example.objects.Recipe;
 import org.example.objects.RecipeMenu;
@@ -23,6 +23,6 @@ public class BakingRecipeFactory extends RecipeFactory{
 
     @Override
     public ArrayList<Recipe> getRecipes() {
-        return null;
+        return recipes;
     }
 }

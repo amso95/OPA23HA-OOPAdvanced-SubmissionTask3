@@ -36,7 +36,7 @@ public class RecipeEditor {
 
         }
         catch (Exception e){
-            System.out.println("There is no instruction with that index.");
+            System.out.println(GlobalDescription.noInstructionAtIndex);
         }
     }
     public void editIngredientVariables(ArrayList<Ingredient> ingredients){
@@ -57,7 +57,7 @@ public class RecipeEditor {
             }
         }
         catch (Exception e){
-            System.out.println("There is no ingredient with that index.");
+            System.out.println(GlobalDescription.noIngredientAtIndex);
         }
     }
 

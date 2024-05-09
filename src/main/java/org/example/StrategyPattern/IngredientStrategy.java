@@ -1,7 +1,6 @@
 package org.example.StrategyPattern;
 
-import org.example.FactoryMethod.IRecipe;
-import org.example.builders.RecipeBuilder;
+import org.example.FactoryPattern.IRecipe;
 import org.example.objects.*;
 
 import java.util.ArrayList;
@@ -9,7 +8,7 @@ import java.util.Scanner;
 
 public class IngredientStrategy implements IIngredientFilter{
     Scanner scanner;
-    RecipeBuilder recipeBuilder;
+    //RecipeBuilder recipeBuilder;
 
     InputGetter inputGetter = new InputGetter();
     private ArrayList<IRecipe> iRecipes;
@@ -19,7 +18,7 @@ public class IngredientStrategy implements IIngredientFilter{
     public IngredientStrategy(RecipeMenu recipeMenu) {
         /* To have the same correct reference value. */
         this.recipeMenu = recipeMenu;
-        this.recipeBuilder = recipeMenu.getRecipeBuilder();
+        //this.recipeBuilder = recipeMenu.getRecipeBuilder();
         this.scanner = recipeMenu.getScanner();
         this.iRecipes = recipeMenu.getIRecipes();
         this.recipes = recipeMenu.getRecipes();
@@ -29,10 +28,10 @@ public class IngredientStrategy implements IIngredientFilter{
         /* Check if the recipe have the ingredient and after that sort the recipes in alphabetic order.
         *  Use: Merge Sort. */
         ArrayList<Recipe> wantedRecipes = getRecipesWithIngredient(containIngredient, recipes);
-        Recipe[] recipeArray = makeListIntoArray(wantedRecipes);
-        mergeSortAlphabeticly(recipeArray);
+        Recipe[] recipeArray = inputGetter.makeListIntoArray(wantedRecipes);
+        mergeSortAlphabetically(recipeArray);
         if(recipeArray.length > 0) {
-            System.out.println("--- Sorted ---");
+            System.out.println("--- Alphabetically Sorted ---");
             System.out.println("Following recipe can be used:");
             for (int i = 0; i < recipeArray.length; i++) {
                 System.out.println(recipeArray[i].getName());
@@ -56,15 +55,7 @@ public class IngredientStrategy implements IIngredientFilter{
         return wantedRecipes;
     }
 
-    private Recipe[] makeListIntoArray(ArrayList<Recipe> recipes){
-        Recipe[] recipeArray = new Recipe[recipes.size()];
-        for(int i = 0; i < recipes.size(); i++){
-            recipeArray[i] = recipes.get(i);
-        }
-        return recipeArray;
-    }
-
-    private void mergeSortAlphabeticly(Recipe[] recipeArray){
+    private void mergeSortAlphabetically(Recipe[] recipeArray){
         if(recipeArray.length < GlobalDescription.sortIfLengthIsBiggerThanTwo){
             return;
         }
@@ -80,8 +71,8 @@ public class IngredientStrategy implements IIngredientFilter{
             right[i] = recipeArray[i + middle];
         }
 
-        mergeSortAlphabeticly(left);
-        mergeSortAlphabeticly(right);
+        mergeSortAlphabetically(left);
+        mergeSortAlphabetically(right);
 
         // sort and merge left and right array
         int indexLeft = 0;

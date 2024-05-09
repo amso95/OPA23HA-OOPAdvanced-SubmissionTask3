@@ -1,6 +1,6 @@
 package org.example.commands;
 
-import org.example.FactoryMethod.IRecipe;
+import org.example.FactoryPattern.IRecipe;
 import org.example.objects.GlobalDescription;
 import org.example.objects.InputGetter;
 import org.example.objects.Recipe;
@@ -24,6 +24,7 @@ public class ShowFullRecipeCommand implements ICommand{
     @Override
     public void runCommand() {
         System.out.println(GlobalDescription.printHeader);
+        // Check if there is any recipes in the list
         if(!recipes.isEmpty()) {
             for (int i = 0; i < recipes.size(); i++) {
                 System.out.println("Index: " + i + ", " + recipes.get(i).getName());
@@ -32,10 +33,12 @@ public class ShowFullRecipeCommand implements ICommand{
             try{
                 recipes.get(indexChoice).printRecipe();
             }catch (Exception e){
-                System.out.println(GlobalDescription.invalidId);
+                // Inform user.
+                System.out.println(GlobalDescription.invalidIndex);
             }
         }
         else {
+            // Inform user.
             System.out.println(GlobalDescription.noRecipesToPrint);
         }
     }

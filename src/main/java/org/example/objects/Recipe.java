@@ -58,16 +58,8 @@ public class Recipe{
         return ingredients;
     }
 
-    public void setIngredients(ArrayList<Ingredient> ingredients) {
-        this.ingredients = ingredients;
-    }
-
     public ArrayList<Instruction> getInstructions() {
         return instructions;
-    }
-
-    public void setInstructions(ArrayList<Instruction> instructions) {
-        this.instructions = instructions;
     }
 
     public String getCreator() {
@@ -82,9 +74,6 @@ public class Recipe{
         return bakingOrCooking;
     }
 
-    public void setBakingOrCooking(String bakingOrCooking) {
-        this.bakingOrCooking = bakingOrCooking;
-    }
 
     public int getId() {
         return id;

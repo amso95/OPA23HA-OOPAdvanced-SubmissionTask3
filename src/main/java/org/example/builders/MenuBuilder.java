@@ -12,7 +12,7 @@ public class MenuBuilder {
     private String message = "";
     private HashMap<String, ICommand> commands = new HashMap<>();
     private ArrayList<String> options = new ArrayList<>();
-    private RecipeMenu recipeMenu = new RecipeMenu();
+    private RecipeMenu recipeMenu;
     public MenuBuilder(RecipeMenu recipeMenu){
         this.recipeMenu = recipeMenu;
     }

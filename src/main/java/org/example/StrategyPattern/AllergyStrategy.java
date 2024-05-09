@@ -1,7 +1,6 @@
 package org.example.StrategyPattern;
 
-import org.example.FactoryMethod.IRecipe;
-import org.example.builders.RecipeBuilder;
+import org.example.FactoryPattern.IRecipe;
 import org.example.objects.*;
 
 import java.util.ArrayList;
@@ -9,7 +8,7 @@ import java.util.Scanner;
 
 public class AllergyStrategy implements IAllergyFilter {
     Scanner scanner;
-    RecipeBuilder recipeBuilder;
+    //RecipeBuilder recipeBuilder;
 
     InputGetter inputGetter = new InputGetter();
     private ArrayList<IRecipe> iRecipes;
@@ -19,20 +18,20 @@ public class AllergyStrategy implements IAllergyFilter {
     public AllergyStrategy(RecipeMenu recipeMenu) {
         /* To have the same correct reference value. */
         this.recipeMenu = recipeMenu;
-        this.recipeBuilder = recipeMenu.getRecipeBuilder();
+        //this.recipeBuilder = recipeMenu.getRecipeBuilder();
         this.scanner = recipeMenu.getScanner();
         this.iRecipes = recipeMenu.getIRecipes();
         this.recipes = recipeMenu.getRecipes();
     }
     @Override
-    public void filterByFoodPreference(String allergy) {
+    public void filterByAllergy(String allergy) {
         /* Check if the recipe have the food preference and after that sort the recipes in alphabetic order.
         *  Use: Quick sort Algorithm. */
         ArrayList<Recipe> wantedRecipes = getRecipesWithoutIngredient(allergy, recipes);
-        Recipe[] recipeArray = makeListIntoArray(wantedRecipes);
+        Recipe[] recipeArray = inputGetter.makeListIntoArray(wantedRecipes);
         quickSort(recipeArray, 0, recipeArray.length - 1);
         if(recipeArray.length > 0) {
-            System.out.println("--- Sorted ---");
+            System.out.println("--- Alphabetically Sorted ---");
             System.out.println("Following recipe can be used:");
             for (int i = 0; i < recipeArray.length; i++) {
                 System.out.println(recipeArray[i].getName());
@@ -59,14 +58,6 @@ public class AllergyStrategy implements IAllergyFilter {
             foundAllergy = false;
         }
         return wantedRecipes;
-    }
-
-    private Recipe[] makeListIntoArray(ArrayList<Recipe> recipes){
-        Recipe[] recipeArray = new Recipe[recipes.size()];
-        for(int i = 0; i < recipes.size(); i++){
-            recipeArray[i] = recipes.get(i);
-        }
-        return recipeArray;
     }
 
    private void quickSort(Recipe[] recipeArray, int min, int max){

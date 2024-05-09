@@ -1,6 +1,6 @@
 package org.example.commands;
 
-import org.example.FactoryMethod.IRecipe;
+import org.example.FactoryPattern.IRecipe;
 import org.example.objects.GlobalDescription;
 import org.example.objects.Recipe;
 import org.example.objects.RecipeMenu;
@@ -22,12 +22,14 @@ public class ShowAllRecipesCommand implements ICommand{
     @Override
     public void runCommand() {
         System.out.println(GlobalDescription.printHeader);
+        // Check if there is any recipes in the list
         if(!recipes.isEmpty()) {
             for (Recipe recipe : recipes) {
                 System.out.println(GlobalDescription.namePrint + recipe.getName());
             }
         }
         else {
+            // Inform user.
             System.out.println(GlobalDescription.noRecipesToPrint);
         }
     }

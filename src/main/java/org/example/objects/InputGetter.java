@@ -16,7 +16,7 @@ public class InputGetter {
             if(!inputSting.isBlank()){
                 return inputSting;
             }
-            System.out.println("Invalid input");
+            System.out.println(GlobalDescription.invalidInput);
         }
     }
     public String getStringInputCanBeEmpty(String message){
@@ -30,7 +30,7 @@ public class InputGetter {
             try {
                 return Integer.parseInt(scanner.nextLine());
             } catch (Exception e) {
-                System.out.println("That's not a number.");
+                System.out.println(GlobalDescription.notANumber);
             }
         }
     }
@@ -78,6 +78,30 @@ public class InputGetter {
         return instructions;
     }
 
-
+    public Recipe[] makeListIntoArray(ArrayList<Recipe> recipes){
+        Recipe[] recipeArray = new Recipe[recipes.size()];
+        for(int i = 0; i < recipes.size(); i++){
+            recipeArray[i] = recipes.get(i);
+        }
+        return recipeArray;
+    }
+    public int getInstructionId(ArrayList<Recipe> recipes){
+        int instructionId = 1;
+        for(int i = 0; i < recipes.size(); i++){
+            for(int j = 0; j < recipes.get(i).getInstructions().size(); j++){
+                instructionId++;
+            }
+        }
+        return instructionId;
+    }
+    public int getIngredientId(ArrayList<Recipe> recipes){
+        int ingredientId = 1;
+        for(int i = 0; i < recipes.size(); i++){
+            for(int j = 0; j < recipes.get(i).getIngredients().size(); j++){
+                ingredientId++;
+            }
+        }
+        return ingredientId;
+    }
 
 }
