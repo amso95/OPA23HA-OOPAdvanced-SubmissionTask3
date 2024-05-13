@@ -61,6 +61,132 @@ public class MessageSender {
         // so the program do not crash.
         return new ArrayList<>();
     }
+    public int getNextRecipeIdRequest(){
+        try{
+            URL url = new URL("http://localhost:8080/recipe/get-next-id");
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.connect(); //This will make the connection
+
+            int code = connection.getResponseCode();
+            if(code >= 200 && code <= 299){ //response is successful
+                //System.out.println(connection.getResponseMessage());
+                //System.out.println(connection.getContent());
+
+                InputStream stream = connection.getInputStream();
+                InputStreamReader streamReader = new InputStreamReader(stream);
+                BufferedReader reader = new BufferedReader(streamReader);
+
+                StringBuilder jsonBuilder = new StringBuilder();
+                String inputLine = reader.readLine();
+                while (inputLine != null){
+                    jsonBuilder.append(inputLine);
+                    inputLine = reader.readLine();
+                }
+                String json = jsonBuilder.toString();
+
+                Gson gson = new Gson();
+                Type listType = new TypeToken<Integer>() {}.getType();
+                int nextId = gson.fromJson(json, listType);
+
+                return nextId;
+            }
+            else{
+                System.out.println("Error status code: " + code);
+            }
+        }
+        catch (Exception e){
+            System.out.println("Nothing to connect to, everything crashed.");
+            System.out.println(e.getMessage());
+        }
+        // If database GET-request fails, return a new empty ArrayList instead of null
+        // so the program do not crash.
+        return -1;
+    }
+    public int getNextIngredientIdRequest(){
+        try{
+            URL url = new URL("http://localhost:8080/ingredient/get-next-id");
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.connect(); //This will make the connection
+
+            int code = connection.getResponseCode();
+            if(code >= 200 && code <= 299){ //response is successful
+                //System.out.println(connection.getResponseMessage());
+                //System.out.println(connection.getContent());
+
+                InputStream stream = connection.getInputStream();
+                InputStreamReader streamReader = new InputStreamReader(stream);
+                BufferedReader reader = new BufferedReader(streamReader);
+
+                StringBuilder jsonBuilder = new StringBuilder();
+                String inputLine = reader.readLine();
+                while (inputLine != null){
+                    jsonBuilder.append(inputLine);
+                    inputLine = reader.readLine();
+                }
+                String json = jsonBuilder.toString();
+
+                Gson gson = new Gson();
+                Type listType = new TypeToken<Integer>() {}.getType();
+                int nextId = gson.fromJson(json, listType);
+
+                return nextId;
+            }
+            else{
+                System.out.println("Error status code: " + code);
+            }
+        }
+        catch (Exception e){
+            System.out.println("Nothing to connect to, everything crashed.");
+            System.out.println(e.getMessage());
+        }
+        // If database GET-request fails, return a new empty ArrayList instead of null
+        // so the program do not crash.
+        return -1;
+    }
+    public int getNextInstructionIdRequest(){
+        try{
+            URL url = new URL("http://localhost:8080/instruction/get-next-id");
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.connect(); //This will make the connection
+
+            int code = connection.getResponseCode();
+            if(code >= 200 && code <= 299){ //response is successful
+                //System.out.println(connection.getResponseMessage());
+                //System.out.println(connection.getContent());
+
+                InputStream stream = connection.getInputStream();
+                InputStreamReader streamReader = new InputStreamReader(stream);
+                BufferedReader reader = new BufferedReader(streamReader);
+
+                StringBuilder jsonBuilder = new StringBuilder();
+                String inputLine = reader.readLine();
+                while (inputLine != null){
+                    jsonBuilder.append(inputLine);
+                    inputLine = reader.readLine();
+                }
+                String json = jsonBuilder.toString();
+
+                Gson gson = new Gson();
+                Type listType = new TypeToken<Integer>() {}.getType();
+                int nextId = gson.fromJson(json, listType);
+
+                return nextId;
+            }
+            else{
+                System.out.println("Error status code: " + code);
+            }
+        }
+        catch (Exception e){
+            System.out.println("Nothing to connect to, everything crashed.");
+            System.out.println(e.getMessage());
+        }
+        // If database GET-request fails, return a new empty ArrayList instead of null
+        // so the program do not crash.
+        return -1;
+    }
 
     public void postRecipe(Recipe recipe){
         try{

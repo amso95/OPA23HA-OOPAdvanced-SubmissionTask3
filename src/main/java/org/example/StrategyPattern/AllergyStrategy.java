@@ -31,8 +31,8 @@ public class AllergyStrategy implements IAllergyFilter {
         Recipe[] recipeArray = inputGetter.makeListIntoArray(wantedRecipes);
         quickSort(recipeArray, 0, recipeArray.length - 1);
         if(recipeArray.length > 0) {
-            System.out.println("--- Alphabetically Sorted ---");
-            System.out.println("Following recipe can be used:");
+            System.out.println(GlobalDescription.alphabeticallySortedHeader);
+            System.out.println(GlobalDescription.filteredRecipes);
             for (int i = 0; i < recipeArray.length; i++) {
                 System.out.println(recipeArray[i].getName());
             }

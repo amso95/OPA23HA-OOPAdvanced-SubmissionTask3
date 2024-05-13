@@ -4,6 +4,7 @@ import org.example.FactoryPattern.CookingRecipeFactory;
 import org.example.FactoryPattern.IRecipe;
 import org.example.FactoryPattern.RecipeFactory;
 import org.example.objects.InputGetter;
+import org.example.objects.MessageSender;
 import org.example.objects.Recipe;
 import org.example.objects.RecipeMenu;
 
@@ -28,11 +29,11 @@ public class AddCookingRecipeCommand implements ICommand{
 
     @Override
     public void runCommand() {
+        MessageSender messageSender = new MessageSender();
         RecipeFactory cookingRecipeFactory = new CookingRecipeFactory(recipeMenu);
-        int instructionId = inputGetter.getInstructionId(recipes);
-        int ingredientId = inputGetter.getIngredientId(recipes);
-        /* Is this ok or is 1 a magic number? */
-        int nextId = recipes.size() + 1;
+        int instructionId = messageSender.getNextInstructionIdRequest();
+        int ingredientId = messageSender.getNextIngredientIdRequest();
+        int nextId = messageSender.getNextRecipeIdRequest();
         IRecipe cookingRecipe = cookingRecipeFactory.createRecipe(nextId, instructionId, ingredientId);
         recipes.add(cookingRecipe.getRecipe());
     }

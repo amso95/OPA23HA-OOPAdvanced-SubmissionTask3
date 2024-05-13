@@ -25,7 +25,7 @@ public class RecipeMenu {
     }
     public void run(){
         while(running) {
-            System.out.println("Welcome to your recipe organizer!");
+            System.out.println(GlobalDescription.welcomeHeader);
             while (true) {
                 System.out.println(message);
                 for (String option : options) {

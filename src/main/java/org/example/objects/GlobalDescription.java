@@ -17,11 +17,13 @@ public class GlobalDescription {
     public static String printHeader= "--- PRINT ---";
     public static String ingredientsHeader= "--- INGREDIENTS ---";
     public static String instructionsHeader= "--- INSTRUCTIONS ---";
+    public static String alphabeticallySortedHeader= "--- Alphabetically Sorted ---";
     public static String invalidInput = "Invalid input.";
     public static String noIngredientAtIndex = "There is no ingredient with that index.";
     public static String noInstructionAtIndex = "There is no instruction with that index.";
     public static String notANumber = "That's not a number.";
-
+    public static String filteredRecipes = "Following recipe can be used:";
+    public static String welcomeHeader = "Welcome to your recipe organizer!";
     public static int sortIfLengthIsBiggerThanTwo = 2;
     public int id = 1;
     public static String cookingRecipeMark = "c";

@@ -4,6 +4,7 @@ import org.example.FactoryPattern.BakingRecipeFactory;
 import org.example.FactoryPattern.IRecipe;
 import org.example.FactoryPattern.RecipeFactory;
 import org.example.objects.InputGetter;
+import org.example.objects.MessageSender;
 import org.example.objects.Recipe;
 import org.example.objects.RecipeMenu;
 
@@ -26,14 +27,11 @@ public class AddBakingRecipeCommand implements ICommand{
 
     @Override
     public void runCommand() {
-        /* Change so this is an add-cooking-recipe-command class.
-         *  This method have to get to CookingRecipe.prepare where the following
-         *  code below should be. */
+        MessageSender messageSender = new MessageSender();
         RecipeFactory bakingRecipeFactory = new BakingRecipeFactory(recipeMenu);
-        int instructionId = inputGetter.getInstructionId(recipes);
-        int ingredientId = inputGetter.getIngredientId(recipes);
-        /* Is this ok or is 1 a magic number? */
-        int nextId = recipes.size() + 1;
+        int instructionId = messageSender.getNextInstructionIdRequest();
+        int ingredientId = messageSender.getNextIngredientIdRequest();
+        int nextId = messageSender.getNextRecipeIdRequest();
         IRecipe bakingRecipe = bakingRecipeFactory.createRecipe(nextId, instructionId, ingredientId);
         recipes.add(bakingRecipe.getRecipe());
     }
