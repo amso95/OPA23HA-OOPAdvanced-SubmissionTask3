@@ -11,9 +11,7 @@ public abstract class RecipeFactory {
         recipe.prepare(id, instructionId, ingredientId);
         return recipe;
     }
-
     public abstract IRecipe makeRecipe();
-
     public abstract ArrayList<Recipe> getRecipes();
 
 }

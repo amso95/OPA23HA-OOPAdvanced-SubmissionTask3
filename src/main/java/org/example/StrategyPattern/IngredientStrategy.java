@@ -11,7 +11,7 @@ public class IngredientStrategy implements IIngredientFilter{
     //RecipeBuilder recipeBuilder;
 
     InputGetter inputGetter = new InputGetter();
-    private ArrayList<IRecipe> iRecipes;
+    //private ArrayList<IRecipe> iRecipes;
     private ArrayList<Recipe> recipes;
     /* To have the same correct reference value. */
     private RecipeMenu recipeMenu;
@@ -20,7 +20,7 @@ public class IngredientStrategy implements IIngredientFilter{
         this.recipeMenu = recipeMenu;
         //this.recipeBuilder = recipeMenu.getRecipeBuilder();
         this.scanner = recipeMenu.getScanner();
-        this.iRecipes = recipeMenu.getIRecipes();
+        //this.iRecipes = recipeMenu.getIRecipes();
         this.recipes = recipeMenu.getRecipes();
     }
     @Override

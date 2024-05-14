@@ -7,10 +7,7 @@ import java.util.Scanner;
 
 public class DeleteRecipeCommand implements ICommand{
     Scanner scanner;
-    //RecipeBuilder recipeBuilder;
-
     InputGetter inputGetter = new InputGetter();
-
     private ArrayList<Recipe> recipes;
     /* To have the same correct reference value. */
     private RecipeMenu recipeMenu;
@@ -26,19 +23,22 @@ public class DeleteRecipeCommand implements ICommand{
         // Check if there is any recipes in the list
         if(!recipes.isEmpty()) {
             for (Recipe recipe : recipes) {
-                recipe.printRecipeWithId();
+                System.out.println("ID: " + recipe.getId() + ", " + recipe.getName());
             }
             int idToDelete = inputGetter.getIntInput(GlobalDescription.recipeToDeleteWithID);
             try {
                 for (int i = 0; i < recipes.size(); i++) {
                     if(recipes.get(i).getId() == idToDelete) {
-                        MessageSender messageSender = new MessageSender();
-                        messageSender.deleteRecipe(recipes.get(i).getId());
+                        DatabaseConnection databaseConnection = new DatabaseConnection();
+                        databaseConnection.deleteRecipe(recipes.get(i).getId());
                         recipes.remove(i);
                         // Inform user.
                         System.out.println(GlobalDescription.deleteSuccess);
+                        return;
                     }
                 }
+                // Inform user.
+                System.out.println(GlobalDescription.deleteNotFound);
             } catch (Exception e) {
                 // Inform user.
                 System.out.println(GlobalDescription.invalidId);
@@ -46,7 +46,7 @@ public class DeleteRecipeCommand implements ICommand{
         }
         else {
             // Inform user.
-            System.out.println(GlobalDescription.noCookingRecipesToDelete);
+            System.out.println(GlobalDescription.noRecipesToDelete);
         }
     }
 }

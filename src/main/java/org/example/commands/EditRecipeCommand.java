@@ -35,15 +35,15 @@ public class EditRecipeCommand implements ICommand{
                         Recipe recipeToEdit = recipes.get(i);
                         recipeEditor.editRecipe(recipeToEdit);
                         // Update recipe in database.
-                        MessageSender messageSender = new MessageSender();
-                        messageSender.putRecipe(recipeToEdit);
+                        DatabaseConnection databaseConnection = new DatabaseConnection();
+                        databaseConnection.recipeToDatabase(recipeToEdit, "edit", "PUT");
                         // Inform user.
                         System.out.println(GlobalDescription.editSuccess);
                         return;
                     }
                 }
                 // Inform user.
-                System.out.println(GlobalDescription.invalidId);
+                System.out.println(GlobalDescription.editNotFound);
             } catch (Exception e) {
                 // Inform user.
                 System.out.println(GlobalDescription.invalidId);

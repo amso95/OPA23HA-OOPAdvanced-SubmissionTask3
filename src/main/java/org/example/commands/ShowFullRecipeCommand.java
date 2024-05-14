@@ -9,7 +9,6 @@ import org.example.objects.RecipeMenu;
 import java.util.ArrayList;
 
 public class ShowFullRecipeCommand implements ICommand{
-    private ArrayList<IRecipe> iRecipes;
     /* To have the same correct reference value. */
     private ArrayList<Recipe> recipes;
     private RecipeMenu recipeMenu;
@@ -18,7 +17,6 @@ public class ShowFullRecipeCommand implements ICommand{
     public ShowFullRecipeCommand(RecipeMenu recipeMenu) {
         this.recipeMenu = recipeMenu;
         this.recipes = recipeMenu.getRecipes();
-        this.iRecipes = recipeMenu.getIRecipes();
     }
 
     @Override

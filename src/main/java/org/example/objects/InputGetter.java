@@ -77,7 +77,6 @@ public class InputGetter {
         }
         return instructions;
     }
-
     public Recipe[] makeListIntoArray(ArrayList<Recipe> recipes){
         Recipe[] recipeArray = new Recipe[recipes.size()];
         for(int i = 0; i < recipes.size(); i++){
@@ -85,23 +84,4 @@ public class InputGetter {
         }
         return recipeArray;
     }
-    public int getInstructionId(ArrayList<Recipe> recipes){
-        int instructionId = 1;
-        for(int i = 0; i < recipes.size(); i++){
-            for(int j = 0; j < recipes.get(i).getInstructions().size(); j++){
-                instructionId++;
-            }
-        }
-        return instructionId;
-    }
-    public int getIngredientId(ArrayList<Recipe> recipes){
-        int ingredientId = 1;
-        for(int i = 0; i < recipes.size(); i++){
-            for(int j = 0; j < recipes.get(i).getIngredients().size(); j++){
-                ingredientId++;
-            }
-        }
-        return ingredientId;
-    }
-
 }

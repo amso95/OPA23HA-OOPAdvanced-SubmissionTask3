@@ -42,7 +42,7 @@ public class RecipeMenu {
     }
 
     public void getRecipesFromDatabase(){
-        MessageSender messageSender = new MessageSender();
+        DatabaseConnection messageSender = new DatabaseConnection();
         recipes = messageSender.getRequest();
     }
     public void setRunning(boolean running) {
@@ -71,13 +71,6 @@ public class RecipeMenu {
         this.options = options;
     }
 
-    /*public ArrayList<Recipe> getRecipes() {
-        return recipes;
-    }
-
-    public void setRecipes(ArrayList<Recipe> recipes) {
-        this.recipes = recipes;
-    }*/
     public void setMessage(String message) {
         this.message = message;
     }

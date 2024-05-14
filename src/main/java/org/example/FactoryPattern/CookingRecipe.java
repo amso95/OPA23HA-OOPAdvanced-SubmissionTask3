@@ -26,8 +26,8 @@ public class CookingRecipe implements IRecipe{
         cookingRecipe = recipeBuilder.setId(id).setName(recipeName).setIngredients(ingredients).setInstructions(instructions).setCreator(recipeCreator).setBakingOrCooking(bakingOrCooking).build();
         cookingRecipes.add(cookingRecipe);
         // Add recipe to database.
-        MessageSender messageSender = new MessageSender();
-        messageSender.postRecipe(cookingRecipe);
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        databaseConnection.recipeToDatabase(cookingRecipe, "create", "POST");
         // Inform user.
         System.out.println("Cooking recipe '" + recipeName + "' is added.");
     }

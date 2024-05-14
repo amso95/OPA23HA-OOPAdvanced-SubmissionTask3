@@ -7,10 +7,12 @@ public class GlobalDescription {
     public static String invalidId = "Not a valid ID.";
     public static String invalidIndex = "Invalid index.";
     public static String editSuccess = "Edit successfully done.";
+    public static String editNotFound = "Edit failed, didn't find a recipe with given id.";
     public static String deleteSuccess = "Delete successfully done.";
+    public static String deleteNotFound = "Delete failed, didn't find a recipe with given id.";
     public static String noCookingRecipesToEdit = "There is no cooking recipes saved.\nNothing to edit.";
     public static String noRecipesToEdit = "There is no recipes saved.\nNothing to edit.";
-    public static String noCookingRecipesToDelete = "There is no cooking recipes saved.\nNothing to delete.";
+    public static String noRecipesToDelete = "There is no recipes saved.\nNothing to delete.";
     public static String noBakingRecipesToDelete = "There is no cooking recipes saved.\nNothing to delete.";
     public static String noRecipesToPrint = "There is no recipes saved.\nNothing to print.";
     public static String noRecipesToFilter = "There is no recipes saved.\nNothing to filter.";
@@ -29,6 +31,7 @@ public class GlobalDescription {
     public static String cookingRecipeMark = "c";
     public static String bakingRecipeMark = "b";
     public static String namePrint = "Name: ";
+    public static String error = "Error. Something went wrong!";
     public static String fullVersionIndex = "Write the index of the recipe you want to see the full version of.";
 
 }

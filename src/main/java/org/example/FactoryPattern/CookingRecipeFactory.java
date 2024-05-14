@@ -15,7 +15,6 @@ public class CookingRecipeFactory extends RecipeFactory{
     @Override
     public IRecipe makeRecipe() {
         CookingRecipe cookingRecipe = new CookingRecipe() ;
-        //recipes = cookingRecipe.getCookingRecipes();
         recipe = cookingRecipe.getRecipe();
         return cookingRecipe;
     }

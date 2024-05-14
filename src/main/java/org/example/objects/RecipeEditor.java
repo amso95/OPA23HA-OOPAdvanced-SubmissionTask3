@@ -63,11 +63,11 @@ public class RecipeEditor {
 
     public void editRecipe(Recipe recipeToEdit){
         String edit  = editStringVariable("Recipe name is: ", recipeToEdit.getName(), "name");
-        if(!edit.equals("")){
+        if(!edit.isEmpty()){
             recipeToEdit.setName(edit);
         }
         edit = editStringVariable("Recipe creator is: ", recipeToEdit.getCreator(), "creator");
-        if(!edit.equals("")){
+        if(!edit.isEmpty()){
             recipeToEdit.setCreator(edit);
         }
         System.out.println(GlobalDescription.instructionsHeader);
