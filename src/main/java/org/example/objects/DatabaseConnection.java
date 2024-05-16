@@ -26,7 +26,9 @@ public class DatabaseConnection {
             if(code >= 200 && code <= 299){
                 InputStream stream = connection.getInputStream();
                 String json = getJsonString(stream);
+                // Check that the given value from API is not null.
                 if(json != null) {
+                    // Create given value to an Integer.
                     Gson gson = new Gson();
                     Type listType = new TypeToken<ArrayList<Recipe>>() {
                     }.getType();
@@ -61,7 +63,9 @@ public class DatabaseConnection {
             if(code >= 200 && code <= 299){
                 InputStream stream = connection.getInputStream();
                 String json = getJsonString(stream);
+                // Check that given value from API is not null
                 if(json != null) {
+                    // Create given value to an Integer.
                     Gson gson = new Gson();
                     Type type = new TypeToken<Integer>() {}.getType();
                     int nextId = gson.fromJson(json, type);
@@ -84,12 +88,13 @@ public class DatabaseConnection {
         try{
             URL url = new URL("http://localhost:8080/recipe/" + urlMapping);
             HttpURLConnection connection = setHttpRequestSettingsForPutAndPost(url, method);
+            // Make the json-object.
             String jsonInputString = setJsonRecipeObject(recipe);
-
             try(OutputStream os = connection.getOutputStream()) {
                 byte[] input = jsonInputString.getBytes("utf-8");
                 os.write(input, 0, input.length);
             }
+            // Read response from InputStream.
             try(BufferedReader br = new BufferedReader(
                     new InputStreamReader(connection.getInputStream(), "utf-8"))) {
                 StringBuilder response = new StringBuilder();
@@ -100,14 +105,18 @@ public class DatabaseConnection {
             }
             // Make the connection.
             connection.connect();
+            // Get response.
+            getResponseStatus(connection);
         }
         catch (Exception e){
             // Inform user.
             outputErrorMessage(e);
         }
+        // Make same type of request for ingredient so the linking is correct in the database.
         for(Ingredient ingredient: recipe.getIngredients()){
             ingredientToDatabase(ingredient, recipe, urlMapping, method);
         }
+        // Make same type of request for instruction so the linking is correct in the database.
         for(Instruction instruction: recipe.getInstructions()){
             instructionToDatabase(instruction, recipe, urlMapping, method);
         }
@@ -116,12 +125,13 @@ public class DatabaseConnection {
         try{
             URL url = new URL("http://localhost:8080/ingredient/" + urlMapping);
             HttpURLConnection connection = setHttpRequestSettingsForPutAndPost(url, method);
+            // Make the json-object.
             String jsonInputString = setJsonIngredientObject(ingredient, recipe);
-
             try(OutputStream os = connection.getOutputStream()) {
                 byte[] input = jsonInputString.getBytes("utf-8");
                 os.write(input, 0, input.length);
             }
+            // Read response from InputStream.
             try(BufferedReader br = new BufferedReader(
                     new InputStreamReader(connection.getInputStream(), "utf-8"))) {
                 StringBuilder response = new StringBuilder();
@@ -132,6 +142,8 @@ public class DatabaseConnection {
             }
             // Make the connection.
             connection.connect();
+            // Get response.
+            getResponseStatus(connection);
         }
         catch (Exception e){
             // Inform user.
@@ -142,12 +154,13 @@ public class DatabaseConnection {
         try{
             URL url = new URL("http://localhost:8080/instruction/" + urlMapping);
             HttpURLConnection connection = setHttpRequestSettingsForPutAndPost(url, method);
+            // Make the json-object.
             String jsonInputString = setJsonInstructionObject(instruction, recipe);
-
             try(OutputStream os = connection.getOutputStream()) {
                 byte[] input = jsonInputString.getBytes("utf-8");
                 os.write(input, 0, input.length);
             }
+            // Read response from InputStream.
             try(BufferedReader br = new BufferedReader(
                     new InputStreamReader(connection.getInputStream(), "utf-8"))) {
                 StringBuilder response = new StringBuilder();
@@ -158,6 +171,8 @@ public class DatabaseConnection {
             }
             // Make the connection.
             connection.connect();
+            // Get response.
+            getResponseStatus(connection);
         }
         catch (Exception e){
             // Inform user.
@@ -172,16 +187,8 @@ public class DatabaseConnection {
             connection.setRequestMethod("DELETE");
             // Make the connection.
             connection.connect();
-            // Get response code.
-            int code = connection.getResponseCode();
-            // Check if response is successful.
-            if(code >= 200 && code <= 299){
-                System.out.println("Delete success! Status code: " + code);
-            }
-            else{
-                // Inform user.
-                System.out.println("Error status code: " + code);
-            }
+            // Get response.
+            getResponseStatus(connection);
         }
         catch (Exception e){
             // Inform user.
@@ -256,5 +263,19 @@ public class DatabaseConnection {
     private void outputErrorMessage(Exception e){
         System.out.println("Nothing to connect to, everything crashed.");
         System.out.println(e.getMessage());
+    }
+    private void getResponseStatus(HttpURLConnection connection){
+        try {
+            // Get response code.
+            int code = connection.getResponseCode();
+            // Check if response is not successful.
+            if (code < 200 && code > 299) {
+                // Inform user.
+                System.out.println("Error status code: " + code);
+            }
+        }
+        catch (Exception e){
+            outputErrorMessage(e);
+        }
     }
 }

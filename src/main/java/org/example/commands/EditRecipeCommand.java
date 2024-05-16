@@ -1,7 +1,6 @@
 package org.example.commands;
 
 import org.example.objects.*;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 

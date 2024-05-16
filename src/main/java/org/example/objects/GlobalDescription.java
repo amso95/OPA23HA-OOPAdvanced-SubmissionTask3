@@ -1,7 +1,6 @@
 package org.example.objects;
 
 public class GlobalDescription {
-
     public static String recipeToEditWithID = "Which recipe do you want to edit?\nWrite the id.";
     public static String recipeToDeleteWithID = "Which recipe do you want to delete?\nWrite the id.";
     public static String invalidId = "Not a valid ID.";
@@ -10,10 +9,8 @@ public class GlobalDescription {
     public static String editNotFound = "Edit failed, didn't find a recipe with given id.";
     public static String deleteSuccess = "Delete successfully done.";
     public static String deleteNotFound = "Delete failed, didn't find a recipe with given id.";
-    public static String noCookingRecipesToEdit = "There is no cooking recipes saved.\nNothing to edit.";
     public static String noRecipesToEdit = "There is no recipes saved.\nNothing to edit.";
     public static String noRecipesToDelete = "There is no recipes saved.\nNothing to delete.";
-    public static String noBakingRecipesToDelete = "There is no cooking recipes saved.\nNothing to delete.";
     public static String noRecipesToPrint = "There is no recipes saved.\nNothing to print.";
     public static String noRecipesToFilter = "There is no recipes saved.\nNothing to filter.";
     public static String printHeader= "--- PRINT ---";
@@ -30,8 +27,8 @@ public class GlobalDescription {
     public int id = 1;
     public static String cookingRecipeMark = "c";
     public static String bakingRecipeMark = "b";
-    public static String namePrint = "Name: ";
     public static String error = "Error. Something went wrong!";
+    public static String filterDone = "Filter done.";
     public static String fullVersionIndex = "Write the index of the recipe you want to see the full version of.";
 
 }

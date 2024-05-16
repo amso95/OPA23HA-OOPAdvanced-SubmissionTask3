@@ -1,6 +1,5 @@
 package org.example.objects;
 
-import org.example.FactoryPattern.IRecipe;
 import org.example.commands.*;
 
 import java.util.ArrayList;
@@ -14,7 +13,6 @@ public class RecipeMenu {
     private ArrayList<String> options = new ArrayList<>();
     private ArrayList<Recipe> recipes = new ArrayList<>();
     private String message;
-    private ArrayList<IRecipe> iRecipes = new ArrayList<>();
 
     public RecipeMenu(){
     }
@@ -57,7 +55,6 @@ public class RecipeMenu {
         this.scanner = scanner;
     }
 
-
     public HashMap<String, ICommand> getCommands() {
         return commands;
     }
@@ -66,17 +63,12 @@ public class RecipeMenu {
         this.commands = commands;
     }
 
-
     public void setOptions(ArrayList<String> options) {
         this.options = options;
     }
 
     public void setMessage(String message) {
         this.message = message;
-    }
-
-    public ArrayList<IRecipe> getIRecipes() {
-        return iRecipes;
     }
 
     public ArrayList<Recipe> getRecipes() {

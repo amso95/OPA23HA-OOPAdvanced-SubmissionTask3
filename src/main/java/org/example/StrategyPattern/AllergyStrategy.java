@@ -8,19 +8,13 @@ import java.util.Scanner;
 
 public class AllergyStrategy implements IAllergyFilter {
     Scanner scanner;
-    //RecipeBuilder recipeBuilder;
-
     InputGetter inputGetter = new InputGetter();
-    //private ArrayList<IRecipe> iRecipes;
     private ArrayList<Recipe> recipes;
-    /* To have the same correct reference value. */
     private RecipeMenu recipeMenu;
     public AllergyStrategy(RecipeMenu recipeMenu) {
         /* To have the same correct reference value. */
         this.recipeMenu = recipeMenu;
-        //this.recipeBuilder = recipeMenu.getRecipeBuilder();
         this.scanner = recipeMenu.getScanner();
-        //this.iRecipes = recipeMenu.getIRecipes();
         this.recipes = recipeMenu.getRecipes();
     }
     @Override
@@ -41,7 +35,7 @@ public class AllergyStrategy implements IAllergyFilter {
             System.out.println("Couldn't find any recipe without allergy type '" + allergy + "'.");
         }
     }
-
+    /* Sort out the recipes that don't have an ingredient with given allergy. */
     private ArrayList<Recipe> getRecipesWithoutIngredient(String allergy, ArrayList<Recipe> recipes){
         boolean foundAllergy = false;
         ArrayList<Recipe> wantedRecipes = new ArrayList<>();
@@ -59,7 +53,7 @@ public class AllergyStrategy implements IAllergyFilter {
         }
         return wantedRecipes;
     }
-
+    /* A function that implements QuickSort. */
    private void quickSort(Recipe[] recipeArray, int min, int max){
        if(min < max){
            int pivotIndex = partition(recipeArray, min, max);
@@ -67,6 +61,12 @@ public class AllergyStrategy implements IAllergyFilter {
            quickSort(recipeArray, pivotIndex + 1, max);
        }
    }
+    /* A function that takes last element as pivot,
+       the pivot element is placed at its correct position
+       in alphabetically sorted array, and places all smaller
+       (e.g. letters in the beginning of the alphabet) to left
+       of pivot and all greater elements (e.g. letters in the end of
+       the alphabet) to right of the pivot. */
    private int partition(Recipe[] recipeArray, int min, int max){
        int pivotIndex = max;
        Recipe pivotValue = recipeArray[pivotIndex];
@@ -79,10 +79,10 @@ public class AllergyStrategy implements IAllergyFilter {
                middleIndex++;
            }
        }
-        swap(recipeArray, middleIndex, max);
+       swap(recipeArray, middleIndex, max);
        return middleIndex;
    }
-
+    /* A function to swap 2 elements in an array. */
    private void swap(Recipe[] recipeArray, int index1, int index2){
        Recipe temp = recipeArray[index1];
        recipeArray[index1] = recipeArray[index2];

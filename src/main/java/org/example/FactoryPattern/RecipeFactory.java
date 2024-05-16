@@ -1,7 +1,6 @@
 package org.example.FactoryPattern;
 
 import org.example.objects.Recipe;
-
 import java.util.ArrayList;
 
 public abstract class RecipeFactory {

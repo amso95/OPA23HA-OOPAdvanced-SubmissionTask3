@@ -41,7 +41,7 @@ public class IngredientStrategy implements IIngredientFilter{
             System.out.println("Couldn't find any recipe with ingredient '" + containIngredient + "'.");
         }
     }
-
+    /* Sort out the recipes that do have the given ingredient. */
     private ArrayList<Recipe> getRecipesWithIngredient(String containIngredient, ArrayList<Recipe> recipes){
         ArrayList<Recipe> wantedRecipes = new ArrayList<>();
         for(int i = 0; i < recipes.size(); i++){
@@ -54,16 +54,17 @@ public class IngredientStrategy implements IIngredientFilter{
         }
         return wantedRecipes;
     }
-
+    /* Merge sort function that sort by recipe name alphabetically. */
     private void mergeSortAlphabetically(Recipe[] recipeArray){
         if(recipeArray.length < GlobalDescription.sortIfLengthIsBiggerThanTwo){
             return;
         }
-        // part up into smaller arrays
+        // Find the middle value of the array.
         int middle = recipeArray.length / 2;
+        // Part up into smaller arrays.
         Recipe left[] = new Recipe[middle];
         Recipe right[] = new Recipe[recipeArray.length - middle];
-
+        // Copy data to the corresponding array.
         for(int i = 0;  i < left.length; i++){
             left[i] = recipeArray[i];
         }
@@ -74,7 +75,7 @@ public class IngredientStrategy implements IIngredientFilter{
         mergeSortAlphabetically(left);
         mergeSortAlphabetically(right);
 
-        // sort and merge left and right array
+        // Sort and merge left and right array
         int indexLeft = 0;
         int indexRight = 0;
 

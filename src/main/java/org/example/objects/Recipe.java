@@ -1,7 +1,6 @@
 package org.example.objects;
 
 import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class Recipe{
     private int id;
@@ -47,11 +46,6 @@ public class Recipe{
             stringToPrint += instruction.getDescription() + "\n";
         }
         return stringToPrint;
-    }
-    public void printRecipeWithId(){
-        String stringToPrint = "";
-        stringToPrint += getStringToPrint("ID: " + id + ", ");
-        System.out.println(stringToPrint);
     }
 
     public ArrayList<Ingredient> getIngredients() {

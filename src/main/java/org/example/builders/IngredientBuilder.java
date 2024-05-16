@@ -1,10 +1,6 @@
 package org.example.builders;
 
 import org.example.objects.Ingredient;
-import org.example.objects.Instruction;
-import org.example.objects.Recipe;
-
-import java.util.ArrayList;
 
 public class IngredientBuilder {
     private int id = Integer.MIN_VALUE;;

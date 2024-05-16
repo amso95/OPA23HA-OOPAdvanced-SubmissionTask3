@@ -12,17 +12,17 @@ public class CookingRecipe implements IRecipe{
     private String bakingOrCooking = GlobalDescription.cookingRecipeMark;
     @Override
     public void prepare(int id, int instructionId, int ingredientId) {
-        /* Implement code that will fill in what's needed to make a cooking recipe. */
         RecipeBuilder recipeBuilder = new RecipeBuilder();
         boolean addIngredients = true;
         boolean addInstructions = true;
+        // Get the values needed to create a recipe that the user will fill in.
         String recipeName = inputGetter.getStringInput("What is the name of the recipe?");
         String recipeCreator = inputGetter.getStringInput("What is the creators name?");
         ArrayList<Ingredient> ingredients = new ArrayList<>();
         ArrayList<Instruction> instructions = new ArrayList<>();
         ingredients = inputGetter.addIngredientsToList(addIngredients, ingredients, ingredientId);
         instructions = inputGetter.addInstructionsToList(addInstructions, instructions, instructionId);
-        /* Add recipe with a recipe builder. */
+        // Add recipe with a recipe builder.
         cookingRecipe = recipeBuilder.setId(id).setName(recipeName).setIngredients(ingredients).setInstructions(instructions).setCreator(recipeCreator).setBakingOrCooking(bakingOrCooking).build();
         cookingRecipes.add(cookingRecipe);
         // Add recipe to database.
@@ -47,11 +47,4 @@ public class CookingRecipe implements IRecipe{
         return cookingRecipe.getName();
     }
 
-    public Recipe getCookingRecipe() {
-        return cookingRecipe;
-    }
-
-    public ArrayList<Recipe> getCookingRecipes() {
-        return cookingRecipes;
-    }
 }

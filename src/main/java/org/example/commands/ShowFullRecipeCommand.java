@@ -1,6 +1,5 @@
 package org.example.commands;
 
-import org.example.FactoryPattern.IRecipe;
 import org.example.objects.GlobalDescription;
 import org.example.objects.InputGetter;
 import org.example.objects.Recipe;

@@ -1,7 +1,6 @@
 package org.example.commands;
 
 import org.example.objects.*;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,7 +8,6 @@ public class DeleteRecipeCommand implements ICommand{
     Scanner scanner;
     InputGetter inputGetter = new InputGetter();
     private ArrayList<Recipe> recipes;
-    /* To have the same correct reference value. */
     private RecipeMenu recipeMenu;
 
     public DeleteRecipeCommand(RecipeMenu recipeMenu) {
@@ -25,11 +23,14 @@ public class DeleteRecipeCommand implements ICommand{
             for (Recipe recipe : recipes) {
                 System.out.println("ID: " + recipe.getId() + ", " + recipe.getName());
             }
+            // Get input id from user.
             int idToDelete = inputGetter.getIntInput(GlobalDescription.recipeToDeleteWithID);
             try {
                 for (int i = 0; i < recipes.size(); i++) {
+                    // Check if given ID from user exist.
                     if(recipes.get(i).getId() == idToDelete) {
                         DatabaseConnection databaseConnection = new DatabaseConnection();
+                        // Remove recipe
                         databaseConnection.deleteRecipe(recipes.get(i).getId());
                         recipes.remove(i);
                         // Inform user.

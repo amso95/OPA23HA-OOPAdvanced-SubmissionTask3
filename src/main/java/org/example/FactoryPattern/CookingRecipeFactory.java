@@ -12,13 +12,13 @@ public class CookingRecipeFactory extends RecipeFactory{
     public CookingRecipeFactory(RecipeMenu recipeMenu){
         recipes = recipeMenu.getRecipes();
     }
+
     @Override
     public IRecipe makeRecipe() {
         CookingRecipe cookingRecipe = new CookingRecipe() ;
         recipe = cookingRecipe.getRecipe();
         return cookingRecipe;
     }
-
 
     @Override
     public ArrayList<Recipe> getRecipes() {

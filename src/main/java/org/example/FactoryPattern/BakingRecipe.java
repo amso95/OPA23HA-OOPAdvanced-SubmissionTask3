@@ -2,7 +2,6 @@ package org.example.FactoryPattern;
 
 import org.example.objects.*;
 import org.example.builders.RecipeBuilder;
-
 import java.util.ArrayList;
 
 public class BakingRecipe implements IRecipe{
@@ -12,17 +11,17 @@ public class BakingRecipe implements IRecipe{
     private String bakingOrCooking = GlobalDescription.bakingRecipeMark;
     @Override
     public void prepare(int id, int instructionId, int ingredientId) {
-        /* Implement code that will fill in what's needed to make a baking recipe. */
         RecipeBuilder recipeBuilder = new RecipeBuilder();
         boolean addIngredients = true;
         boolean addInstructions = true;
+        // Get the values needed to create a recipe that the user will fill in.
         String recipeName = inputGetter.getStringInput("What is the name of the recipe?");
         String recipeCreator = inputGetter.getStringInput("What is the creators name?");
         ArrayList<Ingredient> ingredients = new ArrayList<>();
         ArrayList<Instruction> instructions = new ArrayList<>();
         ingredients = inputGetter.addIngredientsToList(addIngredients, ingredients, ingredientId);
         instructions = inputGetter.addInstructionsToList(addInstructions, instructions, instructionId);
-        /* Add recipe with a recipe builder. */
+        // Add recipe with a recipe builder.
         bakingRecipe = recipeBuilder.setId(id).setName(recipeName).setIngredients(ingredients).setInstructions(instructions).setCreator(recipeCreator).setBakingOrCooking(bakingOrCooking).build();
         bakingRecipes.add(bakingRecipe);
         // Add recipe to database.
@@ -47,11 +46,4 @@ public class BakingRecipe implements IRecipe{
         return bakingRecipe.getName();
     }
 
-    public Recipe getBakingRecipe() {
-        return bakingRecipe;
-    }
-
-    public ArrayList<Recipe> getBakingRecipes() {
-        return bakingRecipes;
-    }
 }
